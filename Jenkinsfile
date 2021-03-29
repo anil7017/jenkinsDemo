@@ -21,7 +21,9 @@ pipeline {
         }
         stage('deploy') {
             steps {
-                echo "hiii"
+                sshagent(['jenkins_demo']) {
+                   sh "scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/jenkinsDemo/target/jenkinsDemo.war ec2-user@15.188.59.200:/opt/tomcat/webapps"
+                }
             }
         }
     }
