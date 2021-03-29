@@ -50,7 +50,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>jenkinsDemo</finalName>
+		<finalName>jenkinsDemo1</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
