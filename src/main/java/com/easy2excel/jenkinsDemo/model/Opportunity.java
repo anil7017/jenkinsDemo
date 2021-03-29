@@ -1,3 +1,4 @@
+/*
 package com.easy2excel.jenkinsDemo.model;
 
 import lombok.Getter;
@@ -13,3 +14,4 @@ public class Opportunity {
     private String currency;
     private float amount;
 }
+*/

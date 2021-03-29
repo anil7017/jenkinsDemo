@@ -1,3 +1,4 @@
+/*
 package com.easy2excel.jenkinsDemo.model;
 
 import lombok.Getter;
@@ -28,3 +29,4 @@ public class Person {
     @JoinColumn(name = "counrty_id" ,nullable = false,foreignKey = @ForeignKey(name = "person_country_fk"))
     private Country country;
 }
+*/

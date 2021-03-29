@@ -1,3 +1,4 @@
+/*
 package com.easy2excel.jenkinsDemo.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -29,3 +30,4 @@ public class UserInfo {
     List<ContactDetails> contacts = new ArrayList<>();
 
 }
+*/

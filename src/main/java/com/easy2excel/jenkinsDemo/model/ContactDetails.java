@@ -1,3 +1,4 @@
+/*
 package com.easy2excel.jenkinsDemo.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -35,3 +36,4 @@ public class ContactDetails {
     private UserInfo user;
 
 }
+*/
