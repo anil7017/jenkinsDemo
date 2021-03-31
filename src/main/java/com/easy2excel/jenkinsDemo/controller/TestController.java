@@ -11,6 +11,6 @@ public class TestController {
     }
     @GetMapping("/")
     public String test1() {
-        return "jenkins demo app working fine 111111";
+        return "jenkins demo app working fine 2222";
     }
 }
