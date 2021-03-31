@@ -9,7 +9,7 @@ public class TestController {
     public String test() {
         return "app working fine";
     }
-    @GetMapping("/")
+    @GetMapping("/trs")
     public String test1() {
         return "jenkins demo app working fine 111111";
     }
