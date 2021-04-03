@@ -1,0 +1,44 @@
+pipeline {
+    agent any
+    environment {
+        PATH = "/opt/maven/bin:$PATH"
+		AWS_ACCESS_KEY_ID = credentials('jenkins-aws-secret-key-id')
+        AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
+		ARTIFACT_NAME = 'jenkinsDemo.war'
+        AWS_S3_BUCKET = 'elasticbeanstalk-eu-west-3-328511475130'
+        AWS_EB_APP_NAME = 'jenkins_demo'
+        AWS_EB_ENVIRONMENT = 'Jenkinsdemo-env'
+        AWS_EB_APP_VERSION = "${BUILD_ID}"
+    }
+    stages {
+        stage('git clone') {
+            steps {
+                git 'https://github.com/anil7017/jenkinsDemo.git'
+            }
+        }
+        stage('compile stage') {
+            steps {
+                sh 'mvn package -DskipTests'
+            }
+        }
+        stage('build') {
+            steps {
+                echo "hiii  mam"
+            }
+        }
+        stage('s3 deploy') {
+            steps {
+                echo "s3 deploy"
+            }
+			post {
+					success {
+
+						sh 'aws configure set region eu-west-3'
+						sh 'aws s3 cp /var/lib/jenkins/workspace/s3_file_upload/target/jenkinsDemo.war s3://$AWS_S3_BUCKET/$ARTIFACT_NAME'
+						sh 'aws elasticbeanstalk create-application-version --application-name $AWS_EB_APP_NAME --version-label $AWS_EB_APP_VERSION --source-bundle S3Bucket=$AWS_S3_BUCKET,S3Key=$ARTIFACT_NAME'
+						sh 'aws elasticbeanstalk update-environment --application-name $AWS_EB_APP_NAME --environment-name $AWS_EB_ENVIRONMENT --version-label $AWS_EB_APP_VERSION'
+					}
+			}
+        }
+    }
+}
